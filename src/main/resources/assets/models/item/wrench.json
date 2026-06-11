@@ -1,0 +1,111 @@
+{
+  "textures": {
+    "metal": "ohmypc:item/wrench",
+    "particle": "ohmypc:item/wrench"
+  },
+  "elements": [
+    {
+      "name": "Handle",
+      "from": [6.5, 0.5, 7],
+      "to":   [9.5, 10,  9],
+      "faces": {
+        "north": { "uv": [4, 6, 7, 15], "texture": "#metal" },
+        "south": { "uv": [4, 6, 7, 15], "texture": "#metal" },
+        "east":  { "uv": [4, 6, 6, 15], "texture": "#metal" },
+        "west":  { "uv": [4, 6, 6, 15], "texture": "#metal" },
+        "up":    { "uv": [4, 7, 7,  9], "texture": "#metal" },
+        "down":  { "uv": [4, 7, 7,  9], "texture": "#metal" }
+      }
+    },
+    {
+      "name": "Neck",
+      "from": [5.5, 9, 7],
+      "to":   [10.5, 13, 9],
+      "faces": {
+        "north": { "uv": [3, 3, 8, 7],  "texture": "#metal" },
+        "south": { "uv": [3, 3, 8, 7],  "texture": "#metal" },
+        "east":  { "uv": [4, 3, 6, 7],  "texture": "#metal" },
+        "west":  { "uv": [4, 3, 6, 7],  "texture": "#metal" },
+        "up":    { "uv": [3, 7, 8, 9],  "texture": "#metal" },
+        "down":  { "uv": [3, 7, 8, 9],  "texture": "#metal" }
+      }
+    },
+    {
+      "name": "Left_Jaw",
+      "from": [3, 12, 7],
+      "to":   [7.5, 16, 9],
+      "faces": {
+        "north": { "uv": [1, 0, 6, 4],  "texture": "#metal" },
+        "south": { "uv": [1, 0, 6, 4],  "texture": "#metal" },
+        "east":  { "uv": [5, 0, 7, 4],  "texture": "#metal" },
+        "west":  { "uv": [1, 0, 3, 4],  "texture": "#metal" },
+        "up":    { "uv": [1, 7, 6, 9],  "texture": "#metal" },
+        "down":  { "uv": [1, 7, 6, 9],  "texture": "#metal" }
+      }
+    },
+    {
+      "name": "Right_Jaw",
+      "from": [8.5, 12, 7],
+      "to":   [13, 16, 9],
+      "faces": {
+        "north": { "uv": [9, 0, 14, 4], "texture": "#metal" },
+        "south": { "uv": [9, 0, 14, 4], "texture": "#metal" },
+        "east":  { "uv": [11, 0, 13, 4],"texture": "#metal" },
+        "west":  { "uv": [9, 0, 11, 4], "texture": "#metal" },
+        "up":    { "uv": [9, 7, 14, 9], "texture": "#metal" },
+        "down":  { "uv": [9, 7, 14, 9], "texture": "#metal" }
+      }
+    },
+    {
+      "name": "Top_Bridge",
+      "from": [3, 14.5, 7],
+      "to":   [13, 16,  9],
+      "faces": {
+        "north": { "uv": [1, 0, 15, 2], "texture": "#metal" },
+        "south": { "uv": [1, 0, 15, 2], "texture": "#metal" },
+        "east":  { "uv": [1, 0,  3, 2], "texture": "#metal" },
+        "west":  { "uv": [1, 0,  3, 2], "texture": "#metal" },
+        "up":    { "uv": [1, 7, 15, 9], "texture": "#metal" }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, 0, -55 ],
+      "translation": [ 0, 3.5, 0.5 ],
+      "scale": [ 0.85, 0.85, 0.85 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 0, 55 ],
+      "translation": [ 0, 3.5, 0.5 ],
+      "scale": [ 0.85, 0.85, 0.85 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, -90, 20 ],
+      "translation": [ 1.5, 3.5, 1.0 ],
+      "scale": [ 0.7, 0.7, 0.7 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 0, 90, -20 ],
+      "translation": [ 1.5, 3.5, 1.0 ],
+      "scale": [ 0.7, 0.7, 0.7 ]
+    },
+    "gui": {
+      "rotation": [ 25, 220, 15 ],
+      "translation": [ 0, -1, 0 ],
+      "scale": [ 0.75, 0.75, 0.75 ]
+    },
+    "head": {
+      "rotation": [ 0, 180, 0 ],
+      "translation": [ 0, 13, 7 ]
+    },
+    "ground": {
+      "translation": [ 0, 2, 0 ],
+      "scale": [ 0.3, 0.3, 0.3 ]
+    },
+    "fixed": {
+      "rotation": [ 0, 180, 0 ],
+      "scale": [ 0.5, 0.5, 0.5 ]
+    }
+  }
+}

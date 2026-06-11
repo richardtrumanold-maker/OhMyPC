@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "ohmypc:block/disk_drive" }
+  }
+}

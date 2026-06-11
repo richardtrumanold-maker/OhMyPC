@@ -1,0 +1,6 @@
+{
+  "parent": "ohmypc:block/cinema_projector",
+  "textures": {
+    "front": "ohmypc:block/cinema_projector_front_on"
+  }
+}

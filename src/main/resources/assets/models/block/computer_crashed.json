@@ -1,0 +1,7 @@
+{
+  "parent": "ohmypc:block/computer_off",
+  "textures": {
+    "front": "ohmypc:block/computer_front_crashed",
+    "led":   "ohmypc:block/led_crashed"
+  }
+}

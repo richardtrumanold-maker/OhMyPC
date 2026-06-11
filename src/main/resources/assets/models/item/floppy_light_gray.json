@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ohmypc:item/floppy_disk",
+    "layer1": "ohmypc:item/floppy_color_light_gray"
+  }
+}

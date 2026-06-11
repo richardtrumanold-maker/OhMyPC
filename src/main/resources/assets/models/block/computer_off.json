@@ -1,0 +1,26 @@
+{
+  "textures": {
+    "side":   "ohmypc:block/computer_side",
+    "front":  "ohmypc:block/computer_front_off",
+    "top":    "ohmypc:block/computer_top",
+    "bottom": "ohmypc:block/computer_bottom",
+    "led":    "ohmypc:block/led_off",
+    "particle":"ohmypc:block/computer_side"
+  },
+  "elements": [
+    { "from":[0,0,0],"to":[16,16,16],
+      "faces":{
+        "north":{"uv":[0,0,16,16],"texture":"#front"},
+        "south":{"uv":[0,0,16,16],"texture":"#side"},
+        "east": {"uv":[0,0,16,16],"texture":"#side"},
+        "west": {"uv":[0,0,16,16],"texture":"#side"},
+        "up":   {"uv":[0,0,16,16],"texture":"#top"},
+        "down": {"uv":[0,0,16,16],"texture":"#bottom"}
+      }
+    },
+    { "comment": "LED индикатор — маленький квадрат на передней панели",
+      "from":[7,10,0],"to":[9,12,0.01],
+      "faces":{ "north":{"uv":[0,0,2,2],"texture":"#led"} }
+    }
+  ]
+}

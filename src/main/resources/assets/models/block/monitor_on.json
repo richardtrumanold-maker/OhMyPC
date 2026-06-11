@@ -1,0 +1,6 @@
+{
+  "parent": "ohmypc:block/monitor_off",
+  "textures": {
+    "screen": "ohmypc:block/monitor_screen_on"
+  }
+}

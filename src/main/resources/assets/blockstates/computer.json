@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,state=off":     { "model": "ohmypc:block/computer_off" },
+    "facing=east,state=off":      { "model": "ohmypc:block/computer_off",     "y": 90  },
+    "facing=south,state=off":     { "model": "ohmypc:block/computer_off",     "y": 180 },
+    "facing=west,state=off":      { "model": "ohmypc:block/computer_off",     "y": 270 },
+    "facing=north,state=booting": { "model": "ohmypc:block/computer_booting" },
+    "facing=east,state=booting":  { "model": "ohmypc:block/computer_booting", "y": 90  },
+    "facing=south,state=booting": { "model": "ohmypc:block/computer_booting", "y": 180 },
+    "facing=west,state=booting":  { "model": "ohmypc:block/computer_booting", "y": 270 },
+    "facing=north,state=on":      { "model": "ohmypc:block/computer_on"  },
+    "facing=east,state=on":       { "model": "ohmypc:block/computer_on",      "y": 90  },
+    "facing=south,state=on":      { "model": "ohmypc:block/computer_on",      "y": 180 },
+    "facing=west,state=on":       { "model": "ohmypc:block/computer_on",      "y": 270 },
+    "facing=north,state=crashed": { "model": "ohmypc:block/computer_crashed" },
+    "facing=east,state=crashed":  { "model": "ohmypc:block/computer_crashed", "y": 90  },
+    "facing=south,state=crashed": { "model": "ohmypc:block/computer_crashed", "y": 180 },
+    "facing=west,state=crashed":  { "model": "ohmypc:block/computer_crashed", "y": 270 }
+  }
+}

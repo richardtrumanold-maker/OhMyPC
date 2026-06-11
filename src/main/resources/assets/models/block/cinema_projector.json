@@ -1,0 +1,73 @@
+{
+  "textures": {
+    "side":    "ohmypc:block/cinema_projector_side",
+    "top":     "ohmypc:block/cinema_projector_top",
+    "front":   "ohmypc:block/cinema_projector_front",
+    "back":    "ohmypc:block/cinema_projector_back",
+    "particle":"ohmypc:block/cinema_projector_side"
+  },
+  "elements": [
+    {
+      "name": "Body",
+      "from": [2, 1, 2],
+      "to":   [14, 14, 14],
+      "faces": {
+        "north": { "uv": [2,2,14,15], "texture": "#front" },
+        "south": { "uv": [2,2,14,15], "texture": "#back"  },
+        "east":  { "uv": [2,2,14,15], "texture": "#side"  },
+        "west":  { "uv": [2,2,14,15], "texture": "#side"  },
+        "up":    { "uv": [2,2,14,14], "texture": "#top"   },
+        "down":  { "uv": [2,2,14,14], "texture": "#side"  }
+      }
+    },
+    {
+      "name": "Lens_Housing",
+      "from": [4, 4, -3],
+      "to":   [12, 12, 2],
+      "faces": {
+        "north": { "uv": [4,4,12,12], "texture": "#front" },
+        "east":  { "uv": [0,4, 3,12], "texture": "#side"  },
+        "west":  { "uv": [0,4, 3,12], "texture": "#side"  },
+        "up":    { "uv": [4,0,12, 3], "texture": "#side"  },
+        "down":  { "uv": [4,0,12, 3], "texture": "#side"  }
+      }
+    },
+    {
+      "name": "Reel_Left",
+      "from": [2, 13, 5],
+      "to":   [7, 16, 10],
+      "faces": {
+        "north": { "uv": [2,0, 7,3],  "texture": "#top"  },
+        "south": { "uv": [2,0, 7,3],  "texture": "#top"  },
+        "east":  { "uv": [0,0, 3,3],  "texture": "#top"  },
+        "west":  { "uv": [0,0, 3,3],  "texture": "#top"  },
+        "up":    { "uv": [2,0, 7,5],  "texture": "#top"  }
+      }
+    },
+    {
+      "name": "Reel_Right",
+      "from": [9, 13, 5],
+      "to":   [14, 16, 10],
+      "faces": {
+        "north": { "uv": [9,0,14,3],  "texture": "#top"  },
+        "south": { "uv": [9,0,14,3],  "texture": "#top"  },
+        "east":  { "uv": [0,0, 3,3],  "texture": "#top"  },
+        "west":  { "uv": [0,0, 3,3],  "texture": "#top"  },
+        "up":    { "uv": [9,0,14,5],  "texture": "#top"  }
+      }
+    },
+    {
+      "name": "Stand",
+      "from": [5, 0, 5],
+      "to":   [11, 1, 11],
+      "faces": {
+        "north": { "uv": [5,0,11,1], "texture": "#side" },
+        "south": { "uv": [5,0,11,1], "texture": "#side" },
+        "east":  { "uv": [5,0,11,1], "texture": "#side" },
+        "west":  { "uv": [5,0,11,1], "texture": "#side" },
+        "up":    { "uv": [5,5,11,11],"texture": "#side" },
+        "down":  { "uv": [5,5,11,11],"texture": "#side" }
+      }
+    }
+  ]
+}

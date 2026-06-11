@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model": "ohmypc:block/cinema_projector" },
+    "facing=east,powered=false":  { "model": "ohmypc:block/cinema_projector", "y": 90 },
+    "facing=south,powered=false": { "model": "ohmypc:block/cinema_projector", "y": 180 },
+    "facing=west,powered=false":  { "model": "ohmypc:block/cinema_projector", "y": 270 },
+    "facing=north,powered=true":  { "model": "ohmypc:block/cinema_projector_on" },
+    "facing=east,powered=true":   { "model": "ohmypc:block/cinema_projector_on", "y": 90 },
+    "facing=south,powered=true":  { "model": "ohmypc:block/cinema_projector_on", "y": 180 },
+    "facing=west,powered=true":   { "model": "ohmypc:block/cinema_projector_on", "y": 270 }
+  }
+}
