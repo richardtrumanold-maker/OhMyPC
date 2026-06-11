@@ -1,3 +1,4 @@
+
 package com.example.ohmypc.lua;
 
 import com.example.ohmypc.block.entity.ComputerBlockEntity;
@@ -264,13 +265,11 @@ public class LuaAPI {
                 be.printLine("§7» Loading reference image for synchronization...");
 
                 // Загружаем референсное изображение на проектор
-                withHologramProjector(be, proj -> {
-                    proj.setMediaUrl(
-                        "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
-                        true
-                    );
-                    proj.setProjection(5.0f, 8.0f, 4.5f, 0.95f);
-                });
+                CinemaProjectorBlockEntity proj = be.getConnectedProjector();
+                if (proj != null) {
+                proj.setProjection((int)dist, w, h, alpha);
+                }
+
 
                 // Также на монитор если подключён
                 withMonitor(be, mon -> {
