@@ -12,7 +12,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --info
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
