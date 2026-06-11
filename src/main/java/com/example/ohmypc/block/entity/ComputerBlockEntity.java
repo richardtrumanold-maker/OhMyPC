@@ -188,16 +188,16 @@ public class ComputerBlockEntity extends BlockEntity implements Container {
     }
 
     public void shutdown() {
-        if (!powered) return;
-        powered = false;
-        NetworkBus.unregister(getNetworkAddress());
-        luaEngine = null;
-        if (level != null) level.setBlock(worldPosition,
+    if (!powered) return;
+    powered = false;
+    NetworkBus.unregister(getNetworkAddress());
+    luaEngine = null;
+    if (level != null) {
         level.setBlock(worldPosition, level.getBlockState(worldPosition).setValue(ComputerBlock.POWERED, false), 3);
-        setChanged();
-        printLine("§7System halted.");
     }
-
+    setChanged();
+    printLine("§7System halted.");
+}
     /** Вызывается при краше Lua-скрипта */
     public void crash(String message) {
         crashed  = true;
