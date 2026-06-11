@@ -14,6 +14,8 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+println('Java version: ' + System.getProperty('java.version'))
+
 minecraft {
     mappings channel: 'official', version: '1.20.1'
     copyIdeResources = true
@@ -23,8 +25,6 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            // Добавляем LuaJ в classpath dev-запуска
-            property 'java.library.path', configurations.runtimeClasspath.asPath
             mods {
                 ohmypc { source sourceSets.main }
             }
@@ -44,7 +44,6 @@ repositories {
 }
 
 configurations {
-    // Отдельный конфиг чтобы LuaJ попал и в devrun и в jar
     embed
     implementation.extendsFrom embed
 }
@@ -79,7 +78,6 @@ jar {
                 "Implementation-Vendor"  : "example"
         ])
     }
-    // Пакуем LuaJ внутрь мода — без этого NoClassDefFoundError
     from {
         configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
     }
