@@ -193,7 +193,7 @@ public class ComputerBlockEntity extends BlockEntity implements Container {
     NetworkBus.unregister(getNetworkAddress());
     luaEngine = null;
     if (level != null) {
-        level.setBlock(worldPosition, level.getBlockState(worldPosition).setValue(ComputerBlock.POWERED, false), 3);
+        level.setBlock(worldPosition, level.getBlockState(worldPosition).setValue(BlockStateProperties.POWERED, false), 3);;
     }
     setChanged();
     printLine("§7System halted.");
