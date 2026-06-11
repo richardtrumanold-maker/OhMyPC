@@ -258,26 +258,25 @@ public class LuaAPI {
                     return LuaValue.FALSE;
                 }
 
-                // Инициализация диагностики дисплея
-                be.printLine("§e[SYS] Initializing display diagnostic protocol...");
-                be.printLine("§7» Checking video output bandwidth... §aOK");
-                be.printLine("§7» Verifying color calibration matrix... §aOK");
-                be.printLine("§7» Loading reference image for synchronization...");
+              // Инициализация диагностики дисплея
+            be.printLine("§e[SYS] Initializing display diagnostic protocol...");
+            be.printLine("§7» Checking video output bandwidth... §aOK");
+            be.printLine("§7» Verifying color calibration matrix... §aOK");
+            be.printLine("§7» Loading reference image for synchronization...");
 
-                BlockPos projPos = be.getConnectedProjector();
-                if (projPos != null && level.getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-                proj.setProjection(...); // тут нужны значения dist, w, h, alpha
-                }
+            BlockPos projPos = be.getConnectedProjector();
+            if (projPos != null && level.getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
+            proj.setProjection(5, 3f, 2f, 0.85f);
+            }
 
-
-                // Также на монитор если подключён
-                withMonitor(be, mon -> {
-                    mon.setMediaUrl(
-                        "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
-                        true
-                    );
-                });
-
+            // Также на монитор если подключён
+            withMonitor(be, mon -> {
+            mon.setMediaUrl(
+            "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
+            true
+            );
+        });
+                
                 be.printLine("§a[SYS] ✓ Display diagnostic complete.");
                 be.printLine("§b§lNEVER GONNA GIVE YOU UP §r§7— calibration sequence active.");
                 be.printLine("§8(This is a critical system function. Run at every boot.)");
