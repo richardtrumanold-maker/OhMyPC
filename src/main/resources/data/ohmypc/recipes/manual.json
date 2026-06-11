@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B",
+    "C"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:book"
+    },
+    "C": {
+      "item": "ohmypc:circuit_board"
+    }
+  },
+  "result": {
+    "item": "ohmypc:manual"
+  }
+}

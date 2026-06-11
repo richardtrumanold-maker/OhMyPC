@@ -1,0 +1,3 @@
+{"type":"minecraft:crafting_shaped","pattern":["III","SCS","III"],
+ "key":{"I":{"item":"minecraft:iron_ingot"},"S":{"item":"minecraft:stone"},"C":{"item":"ohmypc:circuit_board"}},
+ "result":{"item":"ohmypc:disk_drive"}}

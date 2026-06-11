@@ -1,0 +1,3 @@
+{"type":"minecraft:crafting_shaped","pattern":["NNN","CBC"],
+ "key":{"N":{"item":"minecraft:note_block"},"C":{"item":"ohmypc:circuit_board"},"B":{"item":"ohmypc:bus_cable"}},
+ "result":{"item":"ohmypc:sound_card"}}

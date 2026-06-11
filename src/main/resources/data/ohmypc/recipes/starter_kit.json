@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "KWC"
+  ],
+  "key": {
+    "K": {
+      "item": "ohmypc:wrench"
+    },
+    "W": {
+      "item": "ohmypc:bus_cable"
+    },
+    "C": {
+      "item": "ohmypc:computer"
+    }
+  },
+  "result": {
+    "item": "ohmypc:starter_kit"
+  }
+}

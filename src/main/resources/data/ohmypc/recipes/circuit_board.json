@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["TTT", "TGT", "TTT"],
+  "key": {
+    "T": {"item": "ohmypc:transistor"},
+    "G": {"item": "minecraft:gold_ingot"}
+  },
+  "result": {"item": "ohmypc:circuit_board"}
+}

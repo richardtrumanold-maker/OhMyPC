@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["TTT", "CCC"],
+  "key": {
+    "T": {"item": "ohmypc:transistor"},
+    "C": {"item": "ohmypc:circuit_board"}
+  },
+  "result": {"item": "ohmypc:memory", "count": 2}
+}

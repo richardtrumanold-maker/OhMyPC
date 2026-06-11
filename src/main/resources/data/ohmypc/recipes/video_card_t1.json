@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GCG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "ohmypc:circuit_board"
+    }
+  },
+  "result": {
+    "item": "ohmypc:video_card_t1"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["GGG", "GCG"],
+  "key": {
+    "G": {"item": "minecraft:gold_ingot"},
+    "C": {"item": "ohmypc:circuit_board"}
+  },
+  "result": {"item": "ohmypc:flash_memory"}
+}

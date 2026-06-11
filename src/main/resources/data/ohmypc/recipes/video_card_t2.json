@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "EGE",
+    "EEE"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "G": {
+      "item": "ohmypc:video_card_t1"
+    }
+  },
+  "result": {
+    "item": "ohmypc:video_card_t2"
+  }
+}

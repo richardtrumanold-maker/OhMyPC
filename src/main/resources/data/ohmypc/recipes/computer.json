@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["III", "ICI", "IPI"],
+  "key": {
+    "I": {"item": "minecraft:iron_ingot"},
+    "C": {"item": "ohmypc:circuit_board"},
+    "P": {"item": "ohmypc:cpu_tier_1"}
+  },
+  "result": {"item": "ohmypc:computer"}
+}

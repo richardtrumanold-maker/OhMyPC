@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["IPI", "ICI", "III"],
+  "key": {
+    "I": {"item": "minecraft:iron_nugget"},
+    "P": {"item": "minecraft:paper"},
+    "C": {"item": "ohmypc:circuit_board"}
+  },
+  "result": {"item": "ohmypc:floppy_disk_white", "count": 1}
+}

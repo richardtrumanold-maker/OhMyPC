@@ -1,0 +1,14 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "ohmypc"
+version="${mod_version}"
+displayName = "OH my PC"
+displayURL = "https://github.com/example/ohmypc"
+logoFile = "logo.png"
+authors = "RichardKashTan"
+description = '''
+A computer mod inspired by OC2R and CC:T
+'''

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "minecraft:copper_ingot"},
+    {"item": "ohmypc:transistor"}
+  ],
+  "result": {"item": "ohmypc:bus_cable", "count": 4}
+}
