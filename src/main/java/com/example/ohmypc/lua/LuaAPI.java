@@ -1,4 +1,4 @@
-
+    
 package com.example.ohmypc.lua;
 
 import com.example.ohmypc.block.entity.ComputerBlockEntity;
@@ -267,10 +267,12 @@ if (projPos != null && be.getLevel() != null && be.getLevel().getBlockEntity(pro
             be.printLine("§7» Verifying color calibration matrix... §aOK");
             be.printLine("§7» Loading reference image for synchronization...");
 
-            BlockPos projPos = be.getConnectedProjector();
-            if (projPos != null && be.level != null && be.level.getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-            proj.setProjection(5, 3f, 2f, 0.85f);
-            }
+            if (be.getLevel() != null) {
+                BlockPos projPos = be.getConnectedProjector();
+                if (projPos != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
+                proj.setProjection(5, 3f, 2f, 0.85f);
+                }
+            }        
 
             // Также на монитор если подключён
             withMonitor(be, mon -> {
