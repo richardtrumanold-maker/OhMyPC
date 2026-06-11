@@ -268,7 +268,7 @@ if (projPos != null && be.getLevel() != null && be.getLevel().getBlockEntity(pro
             be.printLine("§7» Loading reference image for synchronization...");
 
             BlockPos projPos = be.getConnectedProjector();
-            if (projPos != null && level.getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
+            if (projPos != null && be.level != null && be.level.getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
             proj.setProjection(5, 3f, 2f, 0.85f);
             }
 
