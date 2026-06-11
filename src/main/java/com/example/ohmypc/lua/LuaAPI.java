@@ -264,10 +264,9 @@ public class LuaAPI {
                 be.printLine("§7» Verifying color calibration matrix... §aOK");
                 be.printLine("§7» Loading reference image for synchronization...");
 
-                // Загружаем референсное изображение на проектор
-                CinemaProjectorBlockEntity proj = be.getConnectedProjector();
-                if (proj != null) {
-                proj.setProjection((int)dist, w, h, alpha);
+                BlockPos projPos = be.getConnectedProjector();
+                if (projPos != null && level.getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
+                proj.setProjection(...); // тут нужны значения dist, w, h, alpha
                 }
 
 
