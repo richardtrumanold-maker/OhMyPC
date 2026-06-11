@@ -264,7 +264,7 @@ public class LuaAPI {
                 be.printLine("§7» Loading reference image for synchronization...");
 
                 // Загружаем референсное изображение на проектор
-                withProjector(be, proj -> {
+                withHologramProjector(be, proj -> {
                     proj.setMediaUrl(
                         "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
                         true
