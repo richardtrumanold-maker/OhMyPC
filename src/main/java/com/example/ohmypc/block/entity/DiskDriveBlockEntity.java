@@ -5,8 +5,8 @@ import com.example.ohmypc.item.FloppyDiskItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -17,12 +17,6 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * Дисковод.
- * Слот 0 = флоппи-диск.
- * При вставке монтирует FloppyFileSystem в подключённый компьютер (/disk/).
- * При извлечении — размонтирует.
- */
 public class DiskDriveBlockEntity extends BlockEntity {
 
     private final ItemStackHandler inventory = new ItemStackHandler(1) {
@@ -37,14 +31,26 @@ public class DiskDriveBlockEntity extends BlockEntity {
     };
     private final LazyOptional<IItemHandler> handler = LazyOptional.of(() -> inventory);
 
-    // Подключённый компьютер
     private BlockPos connectedComputer = null;
-
-    // Текущий смонтированный диск
     private FloppyFileSystem mounted = null;
 
     public DiskDriveBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DISK_DRIVE.get(), pos, state);
+    }
+
+    // ── Методы для DiskDriveBlock ────────────────────────────────────────────
+    public void insertDisk(ItemStack stack) {
+        inventory.setStackInSlot(0, stack);
+    }
+
+    public ItemStack ejectDisk() {
+        ItemStack disk = inventory.getStackInSlot(0).copy();
+        inventory.setStackInSlot(0, ItemStack.EMPTY);
+        return disk;
+    }
+
+    public static void tick(Level level, BlockPos pos, BlockState state, DiskDriveBlockEntity be) {
+        // Логика тика дисковода (если нужна)
     }
 
     // ── Маунт ────────────────────────────────────────────────────────────────
@@ -66,7 +72,6 @@ public class DiskDriveBlockEntity extends BlockEntity {
         }
     }
 
-    /** ПКМ — подключить/отключить компьютер */
     public void connectTo(BlockPos computerPos) {
         this.connectedComputer = computerPos;
         notifyComputer();
@@ -82,11 +87,13 @@ public class DiskDriveBlockEntity extends BlockEntity {
         setChanged();
     }
 
-    public boolean hasDisk()   { return !inventory.getStackInSlot(0).isEmpty(); }
-    public String  getDiskColor() {
+    public boolean hasDisk() { return !inventory.getStackInSlot(0).isEmpty(); }
+    
+    public String getDiskColor() {
         ItemStack s = inventory.getStackInSlot(0);
         return (s.getItem() instanceof FloppyDiskItem f) ? f.getColorName() : "none";
     }
+    
     public FloppyFileSystem getMounted() { return mounted; }
     public ItemStackHandler getInventory() { return inventory; }
 
@@ -96,11 +103,11 @@ public class DiskDriveBlockEntity extends BlockEntity {
         tag.put("inv", inventory.serializeNBT());
         if (connectedComputer != null) tag.putLong("comp", connectedComputer.asLong());
     }
+
     @Override public void load(CompoundTag tag) {
         super.load(tag);
         if (tag.contains("inv")) inventory.deserializeNBT(tag.getCompound("inv"));
         if (tag.contains("comp")) connectedComputer = BlockPos.of(tag.getLong("comp"));
-        // Восстановить маунт
         ItemStack disk = inventory.getStackInSlot(0);
         if (disk.getItem() instanceof FloppyDiskItem f) {
             mounted = new FloppyFileSystem(f.getColorName());
@@ -112,5 +119,9 @@ public class DiskDriveBlockEntity extends BlockEntity {
         if (cap == ForgeCapabilities.ITEM_HANDLER) return handler.cast();
         return super.getCapability(cap, side);
     }
-    @Override public void invalidateCaps() { super.invalidateCaps(); handler.invalidate(); }
+
+    @Override public void invalidateCaps() {
+        super.invalidateCaps();
+        handler.invalidate();
+    }
 }
