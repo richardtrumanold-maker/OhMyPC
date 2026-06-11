@@ -160,7 +160,7 @@ public class LuaAPI {
             float w     = (float) a.optdouble(2, 4.0);
             float h     = (float) a.optdouble(3, 3.0);
             float alpha = (float) a.optdouble(4, 0.82);
-            withHologram(be, hp -> hp.setProjection((int)dist, w, h, alpha);
+            withHologram(be, hp -> hp.setProjection((int)dist, w, h, alpha));
             return LuaValue.NIL;
         }});
         g.set("projector", holo);
