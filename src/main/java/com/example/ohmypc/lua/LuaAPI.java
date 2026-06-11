@@ -154,10 +154,13 @@ public class LuaAPI {
         holo.set("setUrl", new TwoArgFunction() { @Override public LuaValue call(LuaValue url, LuaValue vid) {
             if (!be.canUseImages()) { be.printLine("§cВидеокарта T1+ required for hologram images"); return LuaValue.FALSE; }
             withHologram(be, h -> h.setMediaUrl(url.tojstring(), !vid.isnil() && vid.toboolean()));
+             if (be.getLevel() != null) {
             BlockPos projPos = be.getConnectedProjector();
-if (projPos != null && be.getLevel() != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-    proj.setProjection(5, 3f, 2f, 0.85f);
-}
+              if (projPos != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
+            proj.setProjection(5, 3f, 2f, 0.85f);
+            }
+            }
+        return LuaValue.TRUE;
         }});
         holo.set("setProjection", new VarArgFunction() { @Override public Varargs invoke(Varargs a) {
             float dist  = (float) a.optdouble(1, 3.0);
