@@ -15,6 +15,13 @@ import java.nio.file.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Флоппи-диск.
+ *
+ * Данные хранятся в [gameDir]/floppy/[colorName]/ на реальной ФС.
+ * Одинаковый цвет = одинаковые данные на любом мире/сервере с тем же gameDir.
+ * Предмет НЕ хранит файлы в NBT — только цвет.
+ */
 public class FloppyDiskItem extends Item {
 
     private final DyeColor color;
@@ -25,15 +32,19 @@ public class FloppyDiskItem extends Item {
     }
 
     public DyeColor getDiskColor() { return color; }
-    public DyeColor getFloppyColor() { return color; }  // ← алиас для совместимости
     public String   getColorName() { return color.getName(); }
 
+    /**
+     * Папка диска — [gameDir]/floppy/[color]/
+     * Создаётся автоматически при первом обращении.
+     */
     public Path getDiskPath() {
         Path root = FMLPaths.GAMEDIR.get().resolve("floppy").resolve(color.getName());
         try { Files.createDirectories(root); } catch (IOException ignored) {}
         return root;
     }
 
+    /** §-код цвета для tooltip */
     public String getSectionColor() {
         return switch (color) {
             case WHITE      -> "§f";
@@ -61,6 +72,7 @@ public class FloppyDiskItem extends Item {
         tooltip.add(Component.literal(getSectionColor() + "● " + color.getName().replace("_", " ") + " disk"));
         tooltip.add(Component.literal("§8floppy/" + getColorName() + "/").withStyle(ChatFormatting.DARK_GRAY));
 
+        // Список файлов на диске
         try {
             Path diskPath = getDiskPath();
             List<String> files = Files.list(diskPath)

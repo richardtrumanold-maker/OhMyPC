@@ -42,12 +42,12 @@ public class StarterKitItem extends Item {
         ItemStack held = player.getItemInHand(hand);
 
         // Выдаём набор — сначала в инвентарь, при нехватке места — дроп
-        give(player, level, new ItemStack(ModItems.COMPUTER_ITEM.get()));
+        give(player, level, new ItemStack(com.example.ohmypc.block.ModBlocks.COMPUTER.get()));
         give(player, level, new ItemStack(ModItems.CPU_TIER_1.get()));
         give(player, level, new ItemStack(ModItems.MEMORY.get(), 2));
         give(player, level, new ItemStack(ModItems.HARD_DRIVE.get()));
-        give(player, level, new ItemStack(ModItems.MONITOR_ITEM.get()));
-        give(player, level, new ItemStack(ModItems.NETWORK_CABLE_ITEM.get(), 4));
+        give(player, level, new ItemStack(com.example.ohmypc.block.ModBlocks.MONITOR.get()));
+        give(player, level, new ItemStack(com.example.ohmypc.block.ModBlocks.NETWORK_CABLE.get(), 4));
         give(player, level, new ItemStack(ModItems.FLOPPY_WHITE.get()));
         give(player, level, new ItemStack(ModItems.MANUAL.get()));
 

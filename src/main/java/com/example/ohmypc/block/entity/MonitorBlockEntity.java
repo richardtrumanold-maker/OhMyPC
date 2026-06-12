@@ -54,7 +54,7 @@ public class MonitorBlockEntity extends BlockEntity {
 
     /** Настраивает роль блока в мультиблоке */
     public void setMultiblock(BlockPos master, int w, int h, boolean master_, int[] local) {
-        this.masterPos = master_ ? null : this.worldPosition;
+        this.masterPos = master_.equals(this.worldPosition) ? null : master;
         this.width     = w;
         this.height    = h;
         this.isMaster  = master_;

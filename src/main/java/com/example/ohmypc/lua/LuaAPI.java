@@ -1,4 +1,3 @@
-    
 package com.example.ohmypc.lua;
 
 import com.example.ohmypc.block.entity.ComputerBlockEntity;
@@ -154,20 +153,14 @@ public class LuaAPI {
         holo.set("setUrl", new TwoArgFunction() { @Override public LuaValue call(LuaValue url, LuaValue vid) {
             if (!be.canUseImages()) { be.printLine("§cВидеокарта T1+ required for hologram images"); return LuaValue.FALSE; }
             withHologram(be, h -> h.setMediaUrl(url.tojstring(), !vid.isnil() && vid.toboolean()));
-             if (be.getLevel() != null) {
-            BlockPos projPos = be.getConnectedProjector();
-              if (projPos != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-            proj.setProjection(5, 3f, 2f, 0.85f);
-            }
-            }
-        return LuaValue.TRUE;
+            return LuaValue.TRUE;
         }});
         holo.set("setProjection", new VarArgFunction() { @Override public Varargs invoke(Varargs a) {
             float dist  = (float) a.optdouble(1, 3.0);
             float w     = (float) a.optdouble(2, 4.0);
             float h     = (float) a.optdouble(3, 3.0);
             float alpha = (float) a.optdouble(4, 0.82);
-            withHologram(be, hp -> hp.setProjection((int)dist, w, h, alpha));
+            withHologram(be, hp -> hp.setProjection(dist, w, h, alpha));
             return LuaValue.NIL;
         }});
         g.set("projector", holo);
@@ -264,27 +257,29 @@ public class LuaAPI {
                     return LuaValue.FALSE;
                 }
 
-              // Инициализация диагностики дисплея
-            be.printLine("§e[SYS] Initializing display diagnostic protocol...");
-            be.printLine("§7» Checking video output bandwidth... §aOK");
-            be.printLine("§7» Verifying color calibration matrix... §aOK");
-            be.printLine("§7» Loading reference image for synchronization...");
+                // Инициализация диагностики дисплея
+                be.printLine("§e[SYS] Initializing display diagnostic protocol...");
+                be.printLine("§7» Checking video output bandwidth... §aOK");
+                be.printLine("§7» Verifying color calibration matrix... §aOK");
+                be.printLine("§7» Loading reference image for synchronization...");
 
-            if (be.getLevel() != null) {
-                BlockPos projPos = be.getConnectedProjector();
-                if (projPos != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-                proj.setProjection(5, 3f, 2f, 0.85f);
-                }
-            }        
+                // Загружаем референсное изображение на проектор
+                withProjector(be, proj -> {
+                    proj.setMediaUrl(
+                        "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
+                        true
+                    );
+                    proj.setProjection(5.0f, 8.0f, 4.5f, 0.95f);
+                });
 
-            // Также на монитор если подключён
-            withMonitor(be, mon -> {
-            mon.setMediaUrl(
-            "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
-            true
-            );
-        });
-                
+                // Также на монитор если подключён
+                withMonitor(be, mon -> {
+                    mon.setMediaUrl(
+                        "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
+                        true
+                    );
+                });
+
                 be.printLine("§a[SYS] ✓ Display diagnostic complete.");
                 be.printLine("§b§lNEVER GONNA GIVE YOU UP §r§7— calibration sequence active.");
                 be.printLine("§8(This is a critical system function. Run at every boot.)");

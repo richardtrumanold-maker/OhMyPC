@@ -14,6 +14,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Кино проектор — как монитор, но рисует парящую плоскость в воздухе.
+ * Подключается к компьютеру кабелем.
+ * Контент и URL — те же что у MonitorBlockEntity.
+ *
+ * Параметры проекции:
+ *  distance  — дистанция от проектора (2–16 блоков)
+ *  scaleW    — ширина голограммы в блоках (1–8)
+ *  scaleH    — высота голограммы в блоках (1–8)
+ *  opacity   — прозрачность 0.0–1.0
+ */
 public class CinemaProjectorBlockEntity extends BlockEntity {
 
     private final List<String> displayLines = new ArrayList<>();
@@ -22,7 +33,7 @@ public class CinemaProjectorBlockEntity extends BlockEntity {
     private String  mediaUrl    = "";
     private boolean isVideo     = false;
 
-    private int   distance  = 3;
+    private int   distance  = 3;   // блоков от проектора
     private float scaleW    = 3f;
     private float scaleH    = 2f;
     private float opacity   = 0.85f;
@@ -43,22 +54,18 @@ public class CinemaProjectorBlockEntity extends BlockEntity {
         displayLines.addAll(lines.subList(0, Math.min(lines.size(), MAX_LINES)));
         sync();
     }
-
     public void pushLine(String line) {
         displayLines.add(line);
         while (displayLines.size() > MAX_LINES) displayLines.remove(0);
         sync();
     }
-
     public void setMediaUrl(String url, boolean video) {
-        this.mediaUrl = url;
-        this.isVideo = video;
-        sync();
+        this.mediaUrl = url; this.isVideo = video; sync();
     }
 
     public List<String> getDisplayLines() { return displayLines; }
-    public String  getMediaUrl()          { return mediaUrl; }
-    public boolean isVideo()              { return isVideo; }
+    public String  getMediaUrl() { return mediaUrl; }
+    public boolean isVideo()     { return isVideo; }
 
     // ── Параметры ────────────────────────────────────────────────────────────
     public void setProjection(int dist, float w, float h, float op) {
@@ -68,17 +75,10 @@ public class CinemaProjectorBlockEntity extends BlockEntity {
         this.opacity  = Math.max(0.1f, Math.min(1f, op));
         sync();
     }
-
     public int   getDistance() { return distance; }
     public float getScaleW()   { return scaleW; }
     public float getScaleH()   { return scaleH; }
     public float getOpacity()  { return opacity; }
-
-    // ── Алиасы для рендерера ─────────────────────────────────────────────────
-    public float getProjectionDistance() { return distance; }
-    public float getScreenWidth()        { return scaleW; }
-    public float getScreenHeight()       { return scaleH; }
-    public float getBeamAlpha()          { return opacity; }
 
     // ── Подключение ──────────────────────────────────────────────────────────
     public void connectTo(BlockPos computer) { this.connectedComputer = computer; sync(); }
@@ -92,14 +92,9 @@ public class CinemaProjectorBlockEntity extends BlockEntity {
         if (level != null && !level.isClientSide())
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
     }
-
     @Nullable @Override public Packet<ClientGamePacketListener> getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
-    }
+        return ClientboundBlockEntityDataPacket.create(this); }
+    @Override public CompoundTag getUpdateTag() { return saveWithoutMetadata(); }
 
     // ── NBT ──────────────────────────────────────────────────────────────────
     @Override protected void saveAdditional(CompoundTag tag) {
@@ -120,14 +115,10 @@ public class CinemaProjectorBlockEntity extends BlockEntity {
         super.load(tag);
         mediaUrl = tag.getString("mediaUrl");
         isVideo  = tag.getBoolean("isVideo");
-        distance = tag.getInt("distance");
-        if (distance < 2) distance = 3;
-        scaleW   = tag.getFloat("scaleW");
-        if (scaleW < 1) scaleW = 3;
-        scaleH   = tag.getFloat("scaleH");
-        if (scaleH < 1) scaleH = 2;
-        opacity  = tag.getFloat("opacity");
-        if (opacity < 0.1f) opacity = 0.85f;
+        distance = tag.getInt("distance"); if (distance < 2) distance = 3;
+        scaleW   = tag.getFloat("scaleW"); if (scaleW < 1)   scaleW  = 3;
+        scaleH   = tag.getFloat("scaleH"); if (scaleH < 1)   scaleH  = 2;
+        opacity  = tag.getFloat("opacity"); if (opacity < 0.1f) opacity = 0.85f;
         if (tag.contains("comp")) connectedComputer = BlockPos.of(tag.getLong("comp"));
         displayLines.clear();
         var lt = tag.getList("lines", 8);

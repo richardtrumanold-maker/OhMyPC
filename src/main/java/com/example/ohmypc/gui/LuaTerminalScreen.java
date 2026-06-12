@@ -39,7 +39,7 @@ public class LuaTerminalScreen extends AbstractContainerScreen<LuaTerminalMenu> 
                 Component.literal(""));
         inputBox.setMaxLength(256);
         inputBox.setBordered(true);
-        inputBox.setFocused(true);
+        inputBox.setFocus(true);
         this.addWidget(inputBox);
         this.setInitialFocus(inputBox);
     }

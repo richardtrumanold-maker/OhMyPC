@@ -20,7 +20,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -189,16 +188,16 @@ public class ComputerBlockEntity extends BlockEntity implements Container {
     }
 
     public void shutdown() {
-    if (!powered) return;
-    powered = false;
-    NetworkBus.unregister(getNetworkAddress());
-    luaEngine = null;
-    if (level != null) {
-        level.setBlock(worldPosition, level.getBlockState(worldPosition).setValue(BlockStateProperties.POWERED, false), 3);;
+        if (!powered) return;
+        powered = false;
+        NetworkBus.unregister(getNetworkAddress());
+        luaEngine = null;
+        if (level != null) level.setBlock(worldPosition,
+                level.getBlockState(worldPosition).setValue(ComputerBlock.POWERED, false), 3);
+        setChanged();
+        printLine("§7System halted.");
     }
-    setChanged();
-    printLine("§7System halted.");
-}
+
     /** Вызывается при краше Lua-скрипта */
     public void crash(String message) {
         crashed  = true;
