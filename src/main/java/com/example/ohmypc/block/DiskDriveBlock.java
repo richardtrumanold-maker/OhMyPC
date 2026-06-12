@@ -77,7 +77,7 @@ public class DiskDriveBlock extends BaseEntityBlock {
             drive.insertDisk(toInsert);
             level.setBlock(pos, state.setValue(HAS_DISK, true), 3);
             player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
-                    "§aInserted §f" + ((FloppyDiskItem)toInsert.getItem()).getFloppyColor().getName() + " §adisk"));
+                    "§aInserted §f" + ((FloppyDiskItem)toInsert.getItem()).getFloppyColor().id + " §adisk"));
             return InteractionResult.CONSUME;
         }
 
