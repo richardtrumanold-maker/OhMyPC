@@ -5,7 +5,6 @@ import com.example.ohmypc.block.ComputerState;
 import com.example.ohmypc.filesystem.FileSystem;
 import com.example.ohmypc.filesystem.FloppyFileSystem;
 import com.example.ohmypc.item.ComponentItem;
-import com.example.ohmypc.projector.CinemaProjectorBlockEntity;
 import com.example.ohmypc.lua.LuaAPI;
 import com.example.ohmypc.lua.LuaEngine;
 import com.example.ohmypc.network.NetworkBus;
