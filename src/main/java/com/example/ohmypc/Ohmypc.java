@@ -2,7 +2,6 @@ package com.example.ohmypc;
 
 import com.example.ohmypc.block.ModBlocks;
 import com.example.ohmypc.block.entity.ModBlockEntities;
-import com.example.ohmypc.client.render.CinemaProjectorRenderer;
 import com.example.ohmypc.client.render.MonitorRenderer;
 import com.example.ohmypc.gui.ComputerAssemblyScreen;
 import com.example.ohmypc.gui.LuaTerminalScreen;
@@ -42,17 +41,15 @@ public class Ohmypc {
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
 
-        LOGGER.info("[OhMyPC] Initialised — version 2.3.0");
+        LOGGER.info("[OhMyPC] Initialised — version 2.3.0 (Cleaned)");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             ModPackets.register();
-            // Создаём корневую папку floppy при старте
             try {
                 Files.createDirectories(FMLPaths.GAMEDIR.get().resolve("floppy"));
-                LOGGER.info("[OhMyPC] Floppy disk folder ready: {}/floppy/",
-                        FMLPaths.GAMEDIR.get());
+                LOGGER.info("[OhMyPC] Floppy disk folder ready: {}/floppy/", FMLPaths.GAMEDIR.get());
             } catch (IOException e) {
                 LOGGER.error("[OhMyPC] Failed to create floppy folder", e);
             }
@@ -61,13 +58,11 @@ public class Ohmypc {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // GUI
             MenuScreens.register(ModMenus.COMPUTER_ASSEMBLY.get(), ComputerAssemblyScreen::new);
-            MenuScreens.register(ModMenus.LUA_TERMINAL.get(),      LuaTerminalScreen::new);
+            MenuScreens.register(ModMenus.LUA_TERMINAL.get(), LuaTerminalScreen::new);
 
-            // BEWLR рендереры
-            BlockEntityRenderers.register(ModBlockEntities.MONITOR.get(),           MonitorRenderer::new);
-            BlockEntityRenderers.register(ModBlockEntities.CINEMA_PROJECTOR.get(), CinemaProjectorRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.MONITOR.get(), MonitorRenderer::new);
+            // Рендерер проектора удалён вместе с самим проектором
         });
     }
 }
