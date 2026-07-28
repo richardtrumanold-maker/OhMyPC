@@ -1,30 +1,33 @@
 {
-  "itemGroup.ohmypc": "OH my PC",
-  "block.ohmypc.computer": "Computer Case",
+  "itemGroup.ohmypc": "OhMyPC",
+  
+  "block.ohmypc.computer": "Computer",
   "block.ohmypc.monitor": "Monitor",
-  "block.ohmypc.network_cable": "Network Cable",
   "block.ohmypc.disk_drive": "Disk Drive",
+  "block.ohmypc.network_cable": "Network Cable",
   "block.ohmypc.network_hub": "Network Hub",
-  "block.ohmypc.cinema_projector": "Cinema Projector",
-  "item.ohmypc.cpu_tier_1": "CPU Tier I",
-  "item.ohmypc.cpu_tier_2": "CPU Tier II",
-  "item.ohmypc.memory": "RAM Module",
-  "item.ohmypc.video_card_t1": "Video Card T1",
-  "item.ohmypc.video_card_t2": "Video Card T2",
-  "item.ohmypc.hard_drive": "Hard Disk Drive",
-  "item.ohmypc.flash_memory": "Solid State Drive",
-  "item.ohmypc.network_card_basic": "Network Card (100 Mbit)",
-  "item.ohmypc.network_card_advanced": "Network Card (1 Gbit)",
-  "item.ohmypc.network_card_elite": "Network Card (10 Gbit)",
-  "item.ohmypc.wireless_modem": "Wi-Fi Modem",
-  "item.ohmypc.wireless_modem_advanced": "Wi-Fi Modem (5G)",
+  
+  "item.ohmypc.cpu_tier_1": "CPU Tier 1",
+  "item.ohmypc.cpu_tier_2": "CPU Tier 2",
+  "item.ohmypc.memory": "Memory (RAM)",
+  "item.ohmypc.hard_drive": "Hard Drive",
+  "item.ohmypc.flash_memory": "Flash Memory",
+  "item.ohmypc.video_card_t1": "Video Card Tier 1",
+  "item.ohmypc.video_card_t2": "Video Card Tier 2",
+  
+  "item.ohmypc.network_card_basic": "Basic Network Card",
+  "item.ohmypc.network_card_advanced": "Advanced Network Card",
+  "item.ohmypc.network_card_elite": "Elite Network Card",
+  "item.ohmypc.wireless_modem": "Wireless Modem",
+  "item.ohmypc.wireless_modem_advanced": "Advanced Wireless Modem",
+  
   "item.ohmypc.transistor": "Transistor",
   "item.ohmypc.circuit_board": "Circuit Board",
-  "item.ohmypc.bus_cable": "Data Bus Cable",
-  "item.ohmypc.turtle": "Programmable Turtle",
-  "item.ohmypc.advanced_turtle": "Advanced Turtle",
-  "container.ohmypc.computer_assembly": "Computer Assembly",
-  "container.ohmypc.lua_terminal": "Lua Terminal",
+  "item.ohmypc.bus_cable": "Bus Cable",
+  
+  "item.ohmypc.starter_kit": "Starter Kit",
+  "item.ohmypc.manual": "OhMyPC Manual",
+  
   "item.ohmypc.floppy_white": "White Floppy Disk",
   "item.ohmypc.floppy_orange": "Orange Floppy Disk",
   "item.ohmypc.floppy_magenta": "Magenta Floppy Disk",
@@ -41,11 +44,11 @@
   "item.ohmypc.floppy_green": "Green Floppy Disk",
   "item.ohmypc.floppy_red": "Red Floppy Disk",
   "item.ohmypc.floppy_black": "Black Floppy Disk",
-  "item.ohmypc.manual": "OhMyPC Manual",
-  "item.ohmypc.starter_kit": "Starter Kit",
-  "item.ohmypc.computer_blockitem": "Computer Case",
-  "item.ohmypc.monitor_blockitem": "Monitor",
-  "item.ohmypc.network_cable_item": "Network Cable",
-  "item.ohmypc.wrench": "Wrench",
-  "item.ohmypc.cinema_projector": "Cinema Projector"
+  
+  "container.ohmypc.computer_assembly": "Computer Assembly",
+  "container.ohmypc.lua_terminal": "Lua Terminal",
+  "container.ohmypc.disk_drive": "Disk Drive",
+  
+  "tooltip.ohmypc.starter_kit": "Right-click to receive basic components",
+  "tooltip.ohmypc.manual": "Your guide to OhMyPC"
 }
