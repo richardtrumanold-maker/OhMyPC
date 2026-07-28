@@ -22,38 +22,35 @@ public class ModCreativeTab {
                         // ── Руководство и стартовый набор ────────────────────
                         output.accept(ModItems.MANUAL.get());
                         output.accept(ModItems.STARTER_KIT.get());
-                        output.accept(ModItems.ACTIVATION_KEY.get());
+                        
                         // ── Блоки ────────────────────────────────────────────
                         output.accept(ModBlocks.COMPUTER.get());
                         output.accept(ModBlocks.MONITOR.get());
                         output.accept(ModBlocks.NETWORK_CABLE.get());
                         output.accept(ModBlocks.DISK_DRIVE.get());
                         output.accept(ModBlocks.NETWORK_HUB.get());
-                        output.accept(ModBlocks.CINEMA_PROJECTOR.get());
-                        // ── CPU ──────────────────────────────────────────────
+                        
+                        // ── Базовые компоненты ───────────────────────────────
                         output.accept(ModItems.CPU_TIER_1.get());
                         output.accept(ModItems.CPU_TIER_2.get());
-                        // ── RAM ──────────────────────────────────────────────
                         output.accept(ModItems.MEMORY.get());
-                        // ── GPU ──────────────────────────────────────────────
                         output.accept(ModItems.VIDEO_CARD_T1.get());
                         output.accept(ModItems.VIDEO_CARD_T2.get());
-                        // ── Storage ──────────────────────────────────────────
                         output.accept(ModItems.HARD_DRIVE.get());
                         output.accept(ModItems.FLASH_MEMORY.get());
-                        // ── Network ──────────────────────────────────────────
+                        
+                        // ── Сеть и интернет ──────────────────────────────────
                         output.accept(ModItems.NETWORK_CARD_BASIC.get());
                         output.accept(ModItems.NETWORK_CARD_ADVANCED.get());
                         output.accept(ModItems.NETWORK_CARD_ELITE.get());
                         output.accept(ModItems.WIRELESS_MODEM.get());
                         output.accept(ModItems.WIRELESS_MODEM_ADVANCED.get());
-                        // ── Материалы ────────────────────────────────────────
+                        
+                        // ── Материалы и кабели ───────────────────────────────
                         output.accept(ModItems.TRANSISTOR.get());
                         output.accept(ModItems.CIRCUIT_BOARD.get());
                         output.accept(ModItems.BUS_CABLE.get());
-                        // ── Черепашки ────────────────────────────────────────
-                        output.accept(ModItems.TURTLE.get());
-                        output.accept(ModItems.ADVANCED_TURTLE.get());
+                        
                         // ── Флоппи-диски (16 цветов) ─────────────────────────
                         output.accept(ModItems.FLOPPY_WHITE.get());
                         output.accept(ModItems.FLOPPY_ORANGE.get());
