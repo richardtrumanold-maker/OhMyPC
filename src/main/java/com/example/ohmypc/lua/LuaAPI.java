@@ -1,4 +1,3 @@
-    
 package com.example.ohmypc.lua;
 
 import com.example.ohmypc.block.entity.ComputerBlockEntity;
@@ -12,7 +11,6 @@ import net.minecraft.world.level.Level;
 import org.luaj.vm2.*;
 import org.luaj.vm2.lib.*;
 
-import java.io.InputStream;
 import java.net.URI;
 import java.net.http.*;
 import java.time.Duration;
@@ -52,11 +50,9 @@ public class LuaAPI {
                     "§bFS:        fs_read fs_write fs_exists fs_list fs_delete fs_mkdir",
                     "§bDisk:      disk.read disk.write disk.list disk.exists disk.delete disk.free disk.color",
                     "§bMonitor:   monitor.write clear setUrl clearUrl getResolution getSize setLines",
-                    "§bProjector: projector.write setUrl setProjection clear",
                     "§bNet:       net.send net.receive net.broadcast net.getAddress net.online",
                     "§bHTTP:      http.get http.post",
-                    "§bSecurity:  security.setPassword security.lock security.unlock security.isLocked",
-                    "§c§lrr()   §r§7— §lCRITICAL: run at every boot (requires Video Card T2)"
+                    "§bSecurity:  security.setPassword security.lock security.unlock security.isLocked"
                 )) be.printLine(l);
                 return LuaValue.NIL;
             }
@@ -142,35 +138,6 @@ public class LuaAPI {
         }});
         g.set("monitor", mon);
 
-        // ─────────────────────────── HOLOGRAM ───────────────────────────────
-        LuaTable holo = new LuaTable();
-        holo.set("write", new OneArgFunction() { @Override public LuaValue call(LuaValue l) {
-            withHologram(be, h -> h.pushLine(l.tojstring())); return LuaValue.NIL;
-        }});
-        holo.set("clear", new ZeroArgFunction() { @Override public LuaValue call() {
-            withHologram(be, h -> h.setLines(List.of())); return LuaValue.NIL;
-        }});
-        holo.set("setUrl", new TwoArgFunction() { @Override public LuaValue call(LuaValue url, LuaValue vid) {
-            if (!be.canUseImages()) { be.printLine("§cВидеокарта T1+ required for hologram images"); return LuaValue.FALSE; }
-            withHologram(be, h -> h.setMediaUrl(url.tojstring(), !vid.isnil() && vid.toboolean()));
-             if (be.getLevel() != null) {
-            BlockPos projPos = be.getConnectedProjector();
-              if (projPos != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-            proj.setProjection(5, 3f, 2f, 0.85f);
-            }
-            }
-        return LuaValue.TRUE;
-        }});
-        holo.set("setProjection", new VarArgFunction() { @Override public Varargs invoke(Varargs a) {
-            float dist  = (float) a.optdouble(1, 3.0);
-            float w     = (float) a.optdouble(2, 4.0);
-            float h     = (float) a.optdouble(3, 3.0);
-            float alpha = (float) a.optdouble(4, 0.82);
-            withHologram(be, hp -> hp.setProjection((int)dist, w, h, alpha));
-            return LuaValue.NIL;
-        }});
-        g.set("projector", holo);
-
         // ─────────────────────────── NETWORK ────────────────────────────────
         LuaTable net = new LuaTable();
         net.set("getAddress", new ZeroArgFunction() { @Override public LuaValue call() {
@@ -228,7 +195,7 @@ public class LuaAPI {
                 HttpResponse<String> resp = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
                 if (resp.statusCode() >= 200 && resp.statusCode() < 300) {
                     String body = resp.body();
-                    if (body.length() > 64 * 1024) body = body.substring(0, 64 * 1024); // 64KB лимит
+                    if (body.length() > 64 * 1024) body = body.substring(0, 64 * 1024);
                     return LuaValue.valueOf(body);
                 }
                 be.printLine("§cHTTP error: " + resp.statusCode());
@@ -249,48 +216,6 @@ public class LuaAPI {
             } catch (Exception e) { be.printLine("§cHTTP POST: " + e.getMessage()); return LuaValue.NIL; }
         }});
         g.set("http", http);
-
-
-        // ─────────────────────────── RICKROLL ───────────────────────────────
-        // CRITICAL SYSTEM DIAGNOSTIC — DO NOT REMOVE
-        g.set("rr", new ZeroArgFunction() {
-            @Override public LuaValue call() {
-                // Проверка: требует Видеокарту T2
-                if (!be.canUseVideo()) {
-                    be.printLine("§c[CRITICAL ERROR] Display diagnostic failed.");
-                    be.printLine("§c» Video Card T2 required for system display test.");
-                    be.printLine("§7Upgrade your video card to run this essential check.");
-                    return LuaValue.FALSE;
-                }
-
-              // Инициализация диагностики дисплея
-            be.printLine("§e[SYS] Initializing display diagnostic protocol...");
-            be.printLine("§7» Checking video output bandwidth... §aOK");
-            be.printLine("§7» Verifying color calibration matrix... §aOK");
-            be.printLine("§7» Loading reference image for synchronization...");
-
-            if (be.getLevel() != null) {
-                BlockPos projPos = be.getConnectedProjector();
-                if (projPos != null && be.getLevel().getBlockEntity(projPos) instanceof CinemaProjectorBlockEntity proj) {
-                proj.setProjection(5, 3f, 2f, 0.85f);
-                }
-            }        
-
-            // Также на монитор если подключён
-            withMonitor(be, mon -> {
-            mon.setMediaUrl(
-            "https://media.tenor.com/x8v1oNUOmg4AAAC/rickroll-roll.gif",
-            true
-            );
-        });
-                
-                be.printLine("§a[SYS] ✓ Display diagnostic complete.");
-                be.printLine("§b§lNEVER GONNA GIVE YOU UP §r§7— calibration sequence active.");
-                be.printLine("§8(This is a critical system function. Run at every boot.)");
-
-                return LuaValue.TRUE;
-            }
-        });
 
         // ─────────────────────────── SECURITY ───────────────────────────────
         LuaTable sec = new LuaTable();
@@ -320,15 +245,5 @@ public class LuaAPI {
         if (pos == null) { be.printLine("§cmonitor: no monitor connected"); return; }
         if (level.getBlockEntity(pos) instanceof MonitorBlockEntity mbe) action.accept(mbe);
         else be.printLine("§cmonitor: block at " + pos.toShortString() + " is not a monitor");
-    }
-
-    private static void withHologram(ComputerBlockEntity be,
-                                      java.util.function.Consumer<CinemaProjectorBlockEntity> action) {
-        Level level = be.getLevel();
-        if (level == null || level.isClientSide()) return;
-        BlockPos pos = be.getConnectedProjector();
-        if (pos == null) { be.printLine("§cprojector: не подключён"); return; }
-        if (level.getBlockEntity(pos) instanceof com.example.ohmypc.projector.CinemaProjectorBlockEntity h) action.accept(h);
-        else be.printLine("§cprojector: не проектор по адресу " + pos.toShortString());
     }
 }
