@@ -2,6 +2,7 @@ package com.example.ohmypc.block;
 
 import com.example.ohmypc.Ohmypc;
 import com.example.ohmypc.item.ModItems;
+import com.example.ohmypc.block.NetworkCableBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
